@@ -7,11 +7,15 @@ import { DataService } from '../data.service';
 })
 export class CountryComponent implements OnInit {
 countries;
+temp;
   constructor(private data:DataService) { }
 
   ngOnInit() {
     this.data.getCountries().subscribe(d => {
       this.countries = d;
+      this.temp=this.countries[0];
+      this.countries[0]=this.countries[104];
+      this.countries[104]=this.temp;
     }) 
   }
 
